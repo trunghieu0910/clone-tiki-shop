@@ -122,3 +122,10 @@ background-color: #aba9a9;
     float: left;
     width: 95%;
 }
+#content{
+    width: 60%;
+    height: 250px;
+    background-color: blueviolet;
+    position: absolute;
+    display: none;
+}

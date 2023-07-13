@@ -14,9 +14,10 @@
 <div class="logo ml-20 my-3"><img src="img/logo.png" alt=""></div>
 <div class="sreach w-50 ml-20 my-3">
     <form>
-        <i class="fas fa-search my-3 mx-3"style="position: absolute;"></i></i><input type="text" name="search" placeholder="Search..">
-        <button>tìm kiếm </button>
+        <i class="fas fa-search my-3 mx-3"style="position: absolute;"></i><input type="text" name="search" id="toggleButton"   placeholder="Search..">
       
+        <button id="btn1">tìm kiếm </button>
+      <div id="content"></div>
       </form>
 
 
@@ -42,7 +43,7 @@
 <div class="h3 w-96  ml-0 "><i class="fas fa-map-marker"></i>Giao đến: Q. 1, P. Bến Nghé, Hồ Chí Minh</div>
 <div class="sale w-full">mỗi ngày, tự động áp dụng không cần săn mã</div>
   </header>
-<article w-full mt-3>
+<article w-full mt-3 id="btn1" id="content">
 <section>
 <div class="col-trai w-1/5 float-left">
 <div class="col-trai-1 w-3/4 my-3.5">
@@ -92,8 +93,14 @@
 </body>
 </html>
 <script>
-  function show() {
-    document.getElementById('btnID')
-        .style.display = "none";
+var toggleButton = document.getElementById("toggleButton");
+var content = document.getElementById("content");
+
+toggleButton.addEventListener("click", function() {
+  if (content.style.display === "none") {
+    content.style.display = "block"; // Hiển thị nội dung nếu đang ẩn
+  } else {
+    content.style.display = "none"; // Ẩn nội dung nếu đang hiển thị
   }
+});
 </script>
