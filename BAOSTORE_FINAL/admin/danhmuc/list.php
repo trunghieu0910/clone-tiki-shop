@@ -37,7 +37,7 @@
                             <td>'.$id.'</td>
                             <td>'.$name.'</td>
                             <td>'.$hinh.'</td>
-                            <td>'.$date.'</td>
+                          
                             <td><a href="'.$suadm.'"><input type="button" value="Sửa" class="btn btn-success">
                             </a> <a href="'.$xoadm.'"><input type="button" value="Xóa" class="btn btn-warning"></a></td>
                         </tr>';
