@@ -4,7 +4,7 @@ function insert_danhmuc($tenloai,$hinh) {
     pdo_execute($sql);
 }
 function delete_danhmuc($id) {
-    $sql = "delete from danhmuc where id=" . $id;
+    $sql = "delete from categories where id=" . $id;
     pdo_execute($sql);
 }
 function loadall_danhmuc() {

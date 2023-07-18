@@ -6,19 +6,40 @@
             <ul>
               <li> <h2 style="color: black;font-weight: bold; font-size: 18px;">nổi bật</h2></li>
               <li>
-                <img src="img/1.webp" alt=""> <a href="#">Tiki ChatGPT</a>
+                <img src="img/1.webp" alt="" style="border-radius: 15px;"> <a href="#">Tiki ChatGPT</a>
               </li>
               <li>
-                <img src="img/1.webp" alt=""> <a href="#">Tiki ChatGPT</a>
+                <img src="img/1.webp" alt="" style="border-radius: 15px;"> <a href="#">Astra Reward</a>
+              </li>
+              <li>
+                <img src="img/1.webp" alt="" style="border-radius: 15px;"> <a href="#">Tiki Exchange</a>
+              </li>
+
+              <li>
+                <img src="img/1.webp" alt="" style="border-radius: 15px;"> <a href="#">Giá Rẻ Mỗi Ngày</a>
               </li>
               <li>
                 <img src="img/1.webp" alt="" style="border-radius: 15px;"> <a href="#">Tiki ChatGPT</a>
               </li>
+              <li>
+                <img src="img/1.webp" alt="" style="border-radius: 15px;"> <a href="#">Astra Reward</a>
+              </li>
+              <li>
+                <img src="img/1.webp" alt="" style="border-radius: 15px;"> <a href="#">Tiki Exchange</a>
+              </li>
 
               <li>
-                <img src="img/1.webp" alt=""> <a href="#">Tiki ChatGPT</a>
+                <img src="img/1.webp" alt="" style="border-radius: 15px;"> <a href="#">Giá Rẻ Mỗi Ngày</a>
               </li>
           </div>
+
+          <div class="menudoc1 menudoc">
+          <li> <h2 style="color: black;font-weight: bold; font-size: 18px;">nổi bật</h2></li>
+          </div>
+
+
+
+
         </div>
       </div>
     </section>

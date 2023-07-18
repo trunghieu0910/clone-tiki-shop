@@ -11,7 +11,7 @@
 </head>
 
 <body style="display:flex; align-items:center; justify-content:center;">
-    
+    p
     <div class="login-page">
         <div class="form">
             <form class="register-form" method="POST">
@@ -26,14 +26,14 @@
                     <span></span>
                     <span></span> Create
                 </a>
-                <p class="message">Already registered? <a href="BAOSTORE_FINAL/admin/index.php">Sign In</a></p>
+                <p class="message">Already registered? <a href="../BAOSTORE_FINAL/admin/index.php">Sign In</a></p>
             </form>
             <form class="login-form" method="post">
                 <h2>
                     </i> Login</h2>
                 <input type="text" placeholder="Username" required />
                 <input type="password" placeholder="Password" required/>
-                <a class="btn" href="BAOSTORE_FINAL/admin/index.php">
+                <a class="btn" href="../BAOSTORE_FINAL/admin/index.php">
                     <span></span>
                     <span></span>
                     <span></span>

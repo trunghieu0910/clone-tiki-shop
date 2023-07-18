@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="trangchu/css/index.css">
   <title>Document</title>
 </head>
 
@@ -27,7 +27,7 @@
     </div>
     <div class="col-1 w-32 ml-6 " style="line-height: 2.2;"><i class="fas fa-house-user"></i>trang chủ</div>
     <div class="col-1 w-28 mx-3   " style="text-align: center; line-height: 2.2;"><i class="fas fa-crown mx-1"></i>Astra</div>
-    <div class="col-1 w-36  "style=" line-height: 2.2;"> <a href="taikhoan.html"><i class="fas fa-smile "></i>Tài khoản</a></div>
+    <div class="col-1 w-36  "style=" line-height: 2.2;"> <a href="trangchu/taikhoan.php"><i class="fas fa-smile "></i>Tài khoản</a></div>
     <div class="col-1 w-4 mx-3  "><i class="fas fa-cart-plus"></i></div>
     <div class="h2  w-50 mx-20">
       <ol>
