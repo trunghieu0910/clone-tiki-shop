@@ -129,3 +129,9 @@ background-color: #aba9a9;
     position: absolute;
     display: none;
 }
+
+.size-content {
+    width: 90%;
+    height: 400px;
+}
+
