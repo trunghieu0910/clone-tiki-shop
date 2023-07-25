@@ -129,6 +129,7 @@ background-color: #aba9a9;
     position: absolute;
     display: none;
 }
+<<<<<<< HEAD
 .slick-initialized .slick-slide {
     margin: 0 10px;
 }
@@ -170,3 +171,11 @@ img {vertical-align: middle;}
   background-color: #f1f1f1;
   color: black;
 }
+=======
+
+.size-content {
+    width: 90%;
+    height: 400px;
+}
+
+>>>>>>> 78af7bf1306ddd37064247a508eb017ad5d83ee9
