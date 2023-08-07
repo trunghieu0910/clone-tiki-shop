@@ -1,0 +1,218 @@
+header{
+    height: 150px;
+    
+}
+.logo{
+   width: 60px; 
+   height: 60px;
+ 
+   float: left;
+}
+.sreach{
+    height: 30px;
+    float: left;
+ 
+    
+}
+.ul2{
+  display: none;
+
+ }
+.ul1:hover .ul2{
+  display: block;
+ 
+ }
+
+.ul2 ul li{
+border: 0.5px solid yellow;
+background-color: #ffb0b0;
+font-size: 15px;
+list-style: none;
+text-align: center;
+border-radius: 15px;
+
+ }
+
+
+input[type=text] {
+    width: 99%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    padding: 7px 10px 9.5px 40px;
+  }
+  button{
+    width: 13%;
+    height: 40px;
+  }
+
+.col-1{
+    height: 40px;
+    float: left;
+    font-size: 18px;
+    margin-top: 1.5%;
+    max-width: 11.333333%;
+}
+.col-1:hover {
+    background-color: rgb(167, 144, 144);
+   border-radius: 5px;
+}
+.h2{
+    height: 40px;
+   margin-top: 1%;
+    float: left;
+}
+.h2 ol li{
+    font-size: 13px;
+    margin-left: 2.5%;
+    float: left;
+    color: #b0a3a3;
+}
+.h3{
+    height: 40px;
+    float: left;
+    font-size: 15px;
+}
+.sale {
+    height: 40px;
+    background-color: #FFE880;
+    float: left;
+    text-align: center;
+}
+
+.col-trai{
+    min-height: 500px;
+  background-color: #ededed;
+    
+}
+.col-phai{
+   height: 848px;
+   background-color: #ededed;
+   margin-top: 2.5%;
+}
+.col-trai-1{
+   height: 778px;
+   margin: 0% auto;
+   background-color: #ededed;
+   border-radius: 5px;
+}
+.menudoc1 {
+    background-color: #ededed;
+    margin-top: 3%;
+}
+.menudoc ul {
+    list-style-type: none;
+}
+.menudoc ul li {
+    padding: 9px 20px;
+    background-color: #ededed;
+}
+.menudoc ul li a {
+    color: #666;
+    text-decoration: none;
+    margin-left: 3%;
+}
+
+.menudoc ul li:hover {
+    background-color: #aba9a9;
+    border-radius: 5px;
+}
+ul li img{
+    width: 13%;
+    float: left;
+}
+.col-phai-phai{
+background-color: #aba9a9;
+ margin-top: 1%;
+}
+.col-phai-trai{
+background-color: #aba9a9;
+ margin-top: 1%;
+}
+.col-phai-phai img{
+    border-radius: 5px;
+}
+.col-phai-trai img{
+    width: 100%;
+ height: 275px;
+  border-radius: 5px;
+}
+.col-phai-1{
+    background-color: rgb(254, 254, 254);
+    float: left;
+    width: 95%;
+}
+.col-phai-1{
+height: 778px;
+}
+.col-phai-2{
+    height: 290px;
+    background-color: rgb(254, 254, 254);
+    float: left;
+    width: 95%; 
+}
+
+
+.trai{
+  width: 65%;
+  height: 250px;
+  float: left;
+}
+.bo{
+    height: 778px;
+    border-left: 1px solid #ededed;
+    width: 10%;
+    position: absolute;
+    margin-left: 51%;
+    margin-top: -10%;
+}
+.phai{
+  width: 30%;
+  height: 250px;
+ 
+  float: right;
+}
+form{
+    margin-top: 2%;
+}
+
+.h{
+    font-size: 20px;
+    margin-top: 1%;
+    margin-left: 4%;
+}
+.upload{
+  width: 15%;
+  height: 110px;
+  border: 1px solid;
+  float: left;
+  border-radius: 95px;
+  background: url(../../img/logo.png);
+ background-color: blue ;
+ margin-left: 3%;
+}
+.txt{
+   float: right;
+   height: 35px;
+}
+.ten5{
+    width: 100%;
+    height: 50px;
+    font-size: 18px;
+    line-height: 2.5;
+}
+.ten4{
+    width: 98%;
+    height: 50px;
+    font-size: 22px;
+    line-height: 2.5;
+    float: left;
+    margin-top: 3%;
+    margin-left: 5%;
+}
+.u{
+float: right;
+margin-right: 28%;
+}
