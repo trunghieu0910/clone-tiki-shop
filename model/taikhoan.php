@@ -10,6 +10,34 @@ function loadone_user($id_user) {
  return $kttk;
 }
 
+function loadall_taikhoan() {
+    $sql="select * from user order by id_user desc";
+    $listtaikhoan = pdo_query($sql);
+    return $listtaikhoan;
+}
+
+function delete_taikhoan($id_user) {
+    $sql= "delete from user where id_user=".$id_user;
+    pdo_execute($sql);
+}
+
+function loadone_taikhoan($id_user) {
+    $sql = "select * from user where id_user=".$id_user;
+    $tk=pdo_query_one($sql);
+    return $tk;
+}
+
+function check($ten_user,$email) {
+    $sql = "select * from user where ten_user='".$ten_user."' and email='".$email."'";
+    $tk=pdo_query_one($sql);
+    return $tk;
+}
+
+function checkmail($email) {
+    $sql = "select * from user where email='".$email."'";
+    $sp=pdo_query_one($sql);
+    return $sp;
+}
 
 function check_user($ten_user) {
     // You need to establish a database connection first using PDO before executing this query.
