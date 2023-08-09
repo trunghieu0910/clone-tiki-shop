@@ -2,6 +2,7 @@
 /**
  * Mở kết nối đến CSDL sử dụng PDO
  */
+$base_path = "/AdminLTE-3.2.0";
 function pdo_get_connection(){
     $dburl = "mysql:host=localhost;dbname=baostore2;charset=utf8";
     $username = 'root';
@@ -28,6 +29,18 @@ function pdo_execute($sql){
         throw $e;
     }
     finally{
+        unset($conn);
+    }
+}
+
+function pdo_execute_pay($sql, $params = []) {
+    try {
+        $conn = pdo_get_connection();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute($params);
+    } catch (PDOException $e) {
+        throw $e;
+    } finally {
         unset($conn);
     }
 }
