@@ -2,6 +2,7 @@
 session_start();
 include "model/pdo.php";
 include "model/sanpham.php";
+include "model/taikhoan.php";
 include "global.php";
 include "model/cart.php";
 
@@ -14,6 +15,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         case 'addcart':
             if (isset($_POST['addsp']) && $_POST['addsp']) {
                 $id_SP = $_POST['id_SP'];
+                $id_user = $_POST['id_user'];
                 $Ten_hanghoa = $_POST['Ten_hanghoa'];
                 $don_gia = $_POST['don_gia'];
                 $image_sp = $_POST['image_sp'];
@@ -34,7 +36,8 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                     $spadd = [$id_SP, $Ten_hanghoa, $don_gia, $image_sp, $soluong];
                     $_SESSION['mycart'][] = $spadd;
                 }
-                header('Location: ./tiki/cart/cart1.php');
+                $users = loadone_user($id_user);
+                header('Location: ./tiki/cart/cart1.php?id_user='.$id_user.'');
                 exit();
             }
             break;
@@ -43,7 +46,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         case 'dellcart':
             if (isset($_POST['id_SP']) && $_POST['id_SP'] != "") {
                 $id_SP_to_delete = $_POST['id_SP'];
-
+                $id_user = $_POST['id_user'];
                 foreach ($_SESSION['mycart'] as $i => $cart_item) {
                     if ($cart_item[0] == $id_SP_to_delete) {
                         unset($_SESSION['mycart'][$i]); // Xóa sản phẩm khỏi giỏ hàng
@@ -51,14 +54,15 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                     }
                 }
             }
-            header('Location: ./tiki/cart/cart1.php');
+            $users = loadone_user($id_user);
+            header('Location: ./tiki/cart/cart1.php?id_user='.$id_user.'');
             break;
 
         case 'themsoluong':
             if (isset($_POST['id_SP']) && isset($_POST['so_luong']) && $_POST['so_luong'] > 0) {
                 $id_SP_to_update = $_POST['id_SP'];
                 $new_quantity = $_POST['so_luong'];
-
+                $id_user = $_POST['id_user'];
                 foreach ($_SESSION['mycart'] as $i => $cart_item) {
                     if ($cart_item[0] == $id_SP_to_update) {
                         $_SESSION['mycart'][$i][4] = $new_quantity;
@@ -66,7 +70,8 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                     }
                 }
             }
-            header('Location: ./tiki/cart/cart1.php');
+            $users = loadone_user($id_user);
+            header('Location: ./tiki/cart/cart1.php?id_user='.$id_user.'');
             break;
 
         case 'pay':
@@ -96,8 +101,9 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                     // $id_HD = $addcart;
                     insert_hoadon($id_SP, $image_sp, $Ten_hanghoa, $dongia, $soluong, $thanh_tien, $id_HD);
                 }
+                $users = loadone_user($id_user);
                 unset($_SESSION['mycart']);
-                header('Location: ./tiki/cart/cart1.php');
+                header('Location: ./tiki/cart/bill.php?id_user='.$id_user.'');
             }
 
             break;

@@ -115,6 +115,7 @@
     <div class="chu">đã bán 2</div>
     <form class="add-to-cart-form" action="giohang.php?act=addcart" method="post">
     <input type="hidden" name="id_SP" value="' . $id_SP . '" >
+    <input type="hidden" name="id_user" value="' . $id_user . '" >
     <input type="hidden" name="Ten_hanghoa" value="' . $Ten_hanghoa . '" >
     <input type="hidden" name="don_gia" value="' . $don_gia . '" >
     <input type="hidden" name="image_sp" value="' . $image_sp . '" >

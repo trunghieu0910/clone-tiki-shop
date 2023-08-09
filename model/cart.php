@@ -103,11 +103,18 @@ function loadone_cthd($id_HDchitiet)
     return $bill;
 }
 
-function loadall_hoadon($id_HDchitiet)
+function loadall_hoadon($id_HD)
 {
-    $sql = "select * from hoadon where id_HDchitiet=" . $id_HDchitiet;
+    $sql = "select * from hoadon where id_HD=" . $id_HD;
     $bill = pdo_query($sql);
     return $bill;
+}
+
+function loadone_hoadon($id_user)
+{
+    $sql = "select * from hoadon where id_user=" . $id_user;
+    $bills = pdo_query($sql);
+    return $bills;
 }
 
 function loadall_bill($id_user)
