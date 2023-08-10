@@ -56,9 +56,15 @@
                 <div id="content"></div>
             </form>
         </div>
+<<<<<<< HEAD
         <div class="col-1 w-32 ml-6 " style="line-height: 2.2;     color: #518cff "><i
                 class="fas fa-house-user"></i><a href="index.php">trang chủ</div></a>
         <div class="col-1 w-28 mx-3   " style="text-align: center; line-height: 2.2;color: #898982"><i
+=======
+        <div class="col-1 w-32 ml-6 " style="line-height: 2.2; color: #518cff "><a href="index.php"><i
+                    class="fas fa-house-user"></i>trang chủ</a></div>
+        <div class="col-1 w-28 mx-3" style="text-align: center; line-height: 2.2;color: #898982"><i
+>>>>>>> 9a51cea3bb8eb8c6a4ed4ce522429e04f9c3eef3
                 class="fas fa-crown mx-1"></i>Astra</div>
 
         <?php
@@ -84,6 +90,29 @@ if (isset($_SESSION['ten_user'])) {
 
                 </div>
             </div>
+<<<<<<< HEAD
+=======
+            <?php
+        } else {
+            ?>
+            <div class="col-1 w-46" style="line-height: 2.2; color: #898982">
+                <a href="index2.php?act=dangky"><i class="fas fa-smile"></i>Tài khoản
+                </a>
+            </div>
+            <?php
+        }
+        ?>
+        <div class="col-1 relative w-16"> <a href="index2.php?act=giohang&id_user=<?php echo $id_user ?>"><i
+                    class="fas fa-cart-plus mt-2 ml-3" style="color: #518cff"></i>
+                <span class="absolute top-1 left-2 text-red-700 font-bold " >
+                    <?php
+                    $totalQuantity = isset($_SESSION['mycart']) ? count($_SESSION['mycart']) : 0;
+                    echo $totalQuantity;
+                    ?>
+                </span>
+        </div>
+        </a>
+>>>>>>> 9a51cea3bb8eb8c6a4ed4ce522429e04f9c3eef3
 
 
             </a>

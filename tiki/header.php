@@ -100,6 +100,7 @@
             extract($sp);
             $hinh=$img_path.$image_sp;
             $linksp = "chitietsp1.php?act=sanphamchitiet&id_SP=" . $id_SP;
+<<<<<<< HEAD
             echo'
           
             <div class="sp2 "><a href="' . $linksp . '"><img src="'.$hinh.'" alt="" width="100%" height: "45%";></a>
@@ -124,6 +125,34 @@
          </div>
          </div>
          <!-- khu vực thương hiệu -->
+=======
+            echo '
+
+    <div class="sp2 relative group"><a href="' . $linksp . '"><img src="' . $hinh . '" alt="" width="100%" height: "45%";></a>
+    <div class="price">' . $don_gia . '.000<span style="color: brown; font-size: 15px;  position: absolute;">đ</span></div>
+    <div class="khung">
+    <div class="daban"></div>
+    <div class="chu">đã bán 2</div>
+    <form class="add-to-cart-form" action="giohang.php?act=addcart" method="post">
+    <input type="hidden" name="id_SP" value="' . $id_SP . '" >
+    <input type="hidden" name="id_user" value="' . $id_user . '" >
+    <input type="hidden" name="Ten_hanghoa" value="' . $Ten_hanghoa . '" >
+    <input type="hidden" name="don_gia" value="' . $don_gia . '" >
+    <input type="hidden" name="image_sp" value="' . $image_sp . '" >
+    <input type="hidden" name="soluong" value="1" >
+    <div><input class="add-to-cart btn btn-primary w-full bg-blue-700 hover-button absolute bottom-14 left-1/2 transform -translate-x-1/2 hidden group-hover:block group-hover:opacity-100 bg-gray-800 text-white py-2 px-4 rounded-lg transition-opacity duration-300 ease-in-out" type="submit" name="addsp" value="Thêm vào giỏ hàng"></div>
+    </form>
+    </div>
+    </div>
+    ';
+          }
+          ?>
+        </div>
+      </div>
+      
+
+      <!-- khu vực thương hiệu -->
+>>>>>>> 9a51cea3bb8eb8c6a4ed4ce522429e04f9c3eef3
       <div class="col-phai-1 rounded-md my-4 mau  ">
         <h1 style=" font-weight: 700;margin-left: 1.2%; width: 90%; margin-top: 1%; " >Thương Hiệu Chính hảng</h1>
         <h1 style="    font-weight: 600; margin-top: -1.8%; color: aqua; margin-left: 18%; width: 5%; " ><img src="tiki/img/th.png" alt="">. </h1>

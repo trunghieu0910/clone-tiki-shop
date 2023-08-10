@@ -72,14 +72,16 @@
             <?php
         }
         ?>
-        <div class="col-1 w-4 mx-3 "> <a href="tiki/cart/cart1.php"><i class="fas fa-cart-plus"
-                    style="color: #518cff"></i></div>
-        <span>
-            <?php
-            $totalQuantity = isset($_SESSION['mycart']) ? count($_SESSION['mycart']) : 0;
-            echo $totalQuantity;
-            ?>
-        </span></a>
+        <div class="col-1 relative w-16"> <a href="tiki/cart/cart1.php"><i
+                    class="fas fa-cart-plus mt-2 ml-3" style="color: #518cff"></i>
+                <span class="absolute top-1 left-2 text-red-700 font-bold " >
+                    <?php
+                    $totalQuantity = isset($_SESSION['mycart']) ? count($_SESSION['mycart']) : 0;
+                    echo $totalQuantity;
+                    ?>
+                </span>
+        </div>
+        </a>
 
         <div class="h2  w-50 mx-20">
             <ol>
@@ -99,7 +101,7 @@
                 style="color: #898982">Giao đến:</span> <u>Q. 1, P. Bến Nghé, Hồ Chí Minh</u></div>
         <div class="sale w-full" style="line-height: 2.2;">mỗi ngày, tự động áp dụng không cần săn mã</div>
     </header>
-    <section class="h-100 gradient-custom">
+    <section class="h-100 bg-slate-200">
         <div class="container py-5">
             <div class="row d-flex justify-content-center my-4">
                 <div class="col-md-8">
@@ -109,10 +111,12 @@
                         </div>
                         <div class="card-body">
                             <?php
-                            if (isset($chitietuser) && is_array($chitietuser)) {
-                                $targetId = 'id_user'; // Thay 'your_target_id' bằng ID bạn muốn lấy thông tin
-                            
-                                foreach ($chitietuser as $user) {
+                            include "../../model/taikhoan.php";
+                            include "../../model/pdo.php";
+                            // $id_user = 'id_user';
+                            // $users = loadone_user($id_user);
+                            if (isset($users) && is_array($users)) {
+                                foreach ($users as $user) {
                                     extract($user);
                                 }
                             }
@@ -136,11 +140,12 @@
 
                                             <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
                                                 <!-- Data -->
-                                                <p><strong>' . $cart_item[1] . '</strong></p>
-                                                <p>' . $cart_item[2] . '.000đ</p>
+                                                <p class="mb-2"><strong>' . $cart_item[1] . '</strong></p>
+                                                <p class="mb-2">Đơn giá: <span class="text-red-600">' . $cart_item[2] . '.000đ</span></p>
                                                 <form class="delete-sp-form" action="../../giohang.php?act=dellcart" method="post">
                                                     <input type="hidden" name="id_SP" value="' . $cart_item[0] . '">
-                                                    <input type="submit" class="btn btn-primary btn-sm me-1 mb-2 bg-blue-700" name="dellcart" data-mdb-toggle="tooltip" title="Remove item" value="Xóa">
+                                                    <input type="hidden" name="id_user" value="' . $id_user . '">
+                                                    <input type="submit" class="bg-red-400 border-0 btn btn-primary btn-sm me-1 mb-2 bg-blue-700" name="dellcart" data-mdb-toggle="tooltip" title="Remove item" value="Xóa">
                                                 </form>
                                                 <!-- Data -->
                                             </div>
@@ -149,14 +154,15 @@
                                                 <!-- so_luong -->
                                                 <form class="update-quantity-form" action="../../giohang.php?act=themsoluong" method="post">
                                                     <input type="hidden" name="id_SP" value="' . $cart_item[0] . '">
-                                                    <input type="number" name="so_luong" value="' . $cart_item[4] . '" min="1">
+                                                    <input type="hidden" name="id_user" value="' . $id_user . '">Số lượng:
+                                                    <input class="w-20 ml-2" type="number" name="so_luong" value="' . $cart_item[4] . '" min="1">
                                                     <input class="btn btn-primary bg-blue-700" type="submit" value="Cập nhật" name="themsoluong">
                                                 </form>
                                                 <!-- so_luong -->
 
                                                 <!-- Price -->
-                                                <p class="text-start text-md-center">
-                                                    <strong>' . $ttien . '.000đ</strong>
+                                                <p class="text-start text-md-center mt-20">
+                                                    Tổng: <strong class="text-red-600">' . $ttien . '.000đ</strong>
                                                 </p>
                                                 <!-- Price -->
                                             </div>
@@ -174,8 +180,8 @@
                     <!-- fooodet -->
                     <div class="card mb-4">
                         <div class="card-body">
-                            <p><strong>Expected shipping delivery</strong></p>
-                            <p class="mb-0">12.10.2020 - 14.10.2020</p>
+                            <p><strong>Ngày Hiện tại</strong></p>
+                            <p class="mb-0" id="dateRange"></p>
                         </div>
                     </div>
                     <div class="card mb-4 mb-lg-0">
@@ -204,6 +210,9 @@
                         </div>
                         <div class="card-body">
                             <ul class="list-group list-group-flush">
+                                <li>
+                                    <img src="../../upload/<?php echo $img; ?>" alt="">
+                                </li>
                                 <li
                                     class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                                     Tên KH:
@@ -223,34 +232,46 @@
                                         <?php echo $dienthoai; ?>
                                     </span>
                                 </li>
-                                <li
-                                    class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
-                                    <div>
-                                        <strong>Total amount</strong>
-                                        <strong>
-                                            <p class="mb-0">(including VAT)</p>
-                                        </strong>
-                                    </div>
-                                    <span id="totalAmount"><strong>
-                                            <?php echo $tong; ?>
-                                            .000đ
-                                        </strong></span>
+                                <form class="update-quantity-form" action="../../giohang.php?act=pay" method="post">
+                                <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                    Phương thức thanh toán:
+                                    <span>
+                                        <select id="pttt" name="pttt" class="my-3">
+                                            <option value="1">Chuyển khoản</option>
+                                            <option value="2">Quét mã QR</option>
+                                            <option value="3">Xu Tiki</option>
+                                            <option value="4">Tiền mặt</option>
+                                        </select>
+                                    </span>
                                 </li>
-                                <li>
-                                <input type="text" name="id_user" value="<?php echo $id_user; ?>">
-                                </li>
+                                
+
+                                    <li
+                                        class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                                        <div>
+                                            <strong>Tổng tiền</strong>
+                                            <strong>
+                                                <p class="mb-0">(chưa VAT)</p>
+                                            </strong>
+                                        </div>
+                                        <span id="totalAmount"><strong>
+                                                <?php echo $tong; ?>
+                                                .000đ
+                                            </strong></span>
+                                    </li>
                             </ul>
-                            <form class="update-quantity-form" action="../../giohang.php?act=pay" method="post">
-                                <input type="hidden" name="ttien" value="<?php echo $ttien; ?>">
-                                <input type="hidden" name="id_user" value="<?php echo $id_user; ?>">
-                                <input type="hidden" name="ten_user" value="<?php echo $ten_user; ?>">
-                                <input type="hidden" name="diachi" value="<?php echo $diachi; ?>">
-                                <input type="hidden" name="dienthoai" value="<?php echo $dienthoai; ?>">
-                                <input type="hidden" name="pttt" value="1">
-                                <input type="hidden" name="email" value="<?php echo $email; ?>">
-                                <input type="hidden" name="ngay" value="">
-                                <input type="submit" class="btn btn-primary btn-lg btn-block" name="pay"
-                                    value="Mua hàng">
+
+                            <input type="hidden" name="ttien" value="<?php echo $ttien; ?>">
+                            <input type="hidden" name="id_user" value="<?php echo $id_user; ?>">
+                            <input type="hidden" name="ten_user" value="<?php echo $ten_user; ?>">
+                            <input type="hidden" name="diachi" value="<?php echo $diachi; ?>">
+                            <input type="hidden" name="Ngay" id="ngayHidden" value="">
+                            <input type="hidden" name="dienthoai" value="<?php echo $dienthoai; ?>">
+
+                            <input type="hidden" name="email" value="<?php echo $email; ?>">
+                            <!-- <input type="hidden" name="ngay" value=""> -->
+                            <input type="submit" class="btn btn-primary border-0 btn-lg btn-block bg-amber-300"
+                                name="pay" value="Mua hàng">
                             </form>
                         </div>
                     </div>
@@ -259,9 +280,25 @@
         </div>
     </section>
     <?php
-    include "tiki/foodter.php";
+    include "../../tiki/foodter.php";
     ?>
 
 </body>
+<script>
+    // Tạo một đối tượng Date mới, đại diện cho ngày và thời gian hiện tại
+    const currentDate = new Date();
+
+    // Lấy thông tin ngày, tháng và năm từ đối tượng Date
+    const day = currentDate.getDate();
+    const month = currentDate.getMonth() + 1; // Tháng trong JavaScript bắt đầu từ 0
+    const year = currentDate.getFullYear();
+
+    // Hiển thị ngày hiện tại trong định dạng "dd.mm.yyyy"
+    const formattedDate = `${day < 10 ? '0' : ''}${day}.${month < 10 ? '0' : ''}${month}.${year}`;
+
+    // Đặt giá trị ngày hiện tại vào input hidden
+    document.getElementById('dateRange').textContent = formattedDate;
+    document.getElementById('ngayHidden').value = formattedDate;
+</script>
 
 </html>
