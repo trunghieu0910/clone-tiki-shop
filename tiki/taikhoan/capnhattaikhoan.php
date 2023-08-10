@@ -30,11 +30,87 @@
     }
     </style>
 </head>
-<?php
-include "tiki/home.php"
-?>
 <body>
-       
+<header w-full>
+        <div class="logo ml-20 my-3"><img src="tiki/img/logo1.png" alt=""></div>
+        <div class="sreach w-50 ml-20 my-3">
+            <form>
+                <i class="fas fa-search my-3 mx-3" style="position: absolute;"></i><input type="text" name="search"
+                    id="toggleButton" placeholder="Search..">
+
+                <button class="rounded-none  ..." style="margin-left: -13%;
+                    border-left: 1px solid; ;">tìm kiếm</button>
+                <div id="content"></div>
+            </form>
+        </div>
+        <div class="col-1 w-32 ml-6 " style="line-height: 2.2; color: #518cff "><a href="../../index.php"><i
+                    class="fas fa-house-user"></i>trang chủ</a></div>
+        <div class="col-1 w-28 mx-3" style="text-align: center; line-height: 2.2;color: #898982"><i
+                class="fas fa-crown mx-1"></i>Astra</div>
+        <?php
+        if (isset($_SESSION['ten_user'])) {
+            extract($_SESSION['ten_user']);
+            ?>
+            <div class="col-1 w-46" style="line-height: 2.2; color: #898982">
+                <div class="ul1"><a href="index2.php?act=dangky"><i class="fas fa-smile"></i>
+                        <?php echo $ten_user; ?>
+                    </a>
+                    <div class="ul2">
+                    <ul>
+                        <li><a href="index2.php?act=chitiettaikhoan&id_user=<?php echo $id_user ?>">Thông Tin Tài
+                                khoản</a>
+                        <li><a href="index2.php?act=quenmk">Quên Mật khẩu </a></li>
+                        <li><a href="index2.php?act=thoat">Đăng xuất</a></li>
+                        <?php if($vai_tro==1){ ?>
+                        <li><a href="admin/index.php">Đăng nhập admin</a>
+                        <?php
+                        }
+                        ?>
+                    </li>
+
+                </div>
+                </div>
+                </a>
+            </div>
+            <?php
+        } else {
+            ?>
+            <div class="col-1 w-46" style="line-height: 2.2; color: #898982">
+                <a href="index2.php?act=dangky"><i class="fas fa-smile"></i>Tài khoản
+                </a>
+            </div>
+            <?php
+        }
+        ?>
+        <div class="col-1 relative w-16"> <a href="tiki/cart/cart1.php"><i
+                    class="fas fa-cart-plus mt-2 ml-3" style="color: #518cff"></i>
+                <span class="absolute top-1 left-2 text-red-700 font-bold " >
+                    <?php
+                    $totalQuantity = isset($_SESSION['mycart']) ? count($_SESSION['mycart']) : 0;
+                    echo $totalQuantity;
+                    ?>
+                </span>
+        </div>
+        </a>
+
+        <div class="h2  w-50 mx-20">
+            <ol>
+                <li>trái cây</li>
+                <li>thịt</li>
+                <li>trứng</li>
+                <li>rau củ quả</li>
+                <li>sữa, bơ, phô mai</li>
+                <li>hải sản</li>
+                <li>thịt</li>
+                <li>trứng</li>
+                <li>thịt</li>
+                <li>trứng</li>
+            </ol>
+        </div>
+        <div class="h3 w-96  ml-0 "><i class="fas fa-map-marker " style="color: #898982"></i><span
+                style="color: #898982">Giao đến:</span> <u>Q. 1, P. Bến Nghé, Hồ Chí Minh</u></div>
+        <div class="sale w-full" style="line-height: 2.2;">mỗi ngày, tự động áp dụng không cần săn mã</div>
+    </header>
     <article w-full mt-3 id="btn1" id="content">
         <section>
             <div class="col-trai w-1/5 float-left  ">

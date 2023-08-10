@@ -63,12 +63,19 @@
                         <?php echo $ten_user; ?>
                     </a>
                     <div class="ul2">
-                        <ul>
-                            <li><a href="index2.php?act=chitiettaikhoan&id_user=<?php echo $id_user ?>">Thông Tin Tài
-                                    khoản</a>
-                            <li><a href="index2.php?act=quenmk">cập </a>
-                            <li><a href="index2.php?act=thoat">Đăng xuất</a>
-                    </div>
+                    <ul>
+                        <li><a href="index2.php?act=chitiettaikhoan&id_user=<?php echo $id_user ?>">Thông Tin Tài
+                                khoản</a>
+                        <li><a href="index2.php?act=quenmk">Quên Mật khẩu </a></li>
+                        <li><a href="index2.php?act=thoat">Đăng xuất</a></li>
+                        <?php if($vai_tro==1){ ?>
+                        <li><a href="admin/index.php">Đăng nhập admin</a>
+                        <?php
+                        }
+                        ?>
+                    </li>
+
+                </div>
                 </div>
                 </a>
             </div>
