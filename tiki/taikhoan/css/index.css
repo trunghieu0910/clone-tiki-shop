@@ -40,7 +40,7 @@ input[type=text] {
     border: 2px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
-    background-color: white;
+    background-color: #ededed;
     padding: 7px 10px 9.5px 40px;
   }
   button{
@@ -84,8 +84,8 @@ input[type=text] {
 
 .col-trai{
     min-height: 500px;
-  background-color: #ededed;
-    
+  
+    width: 100%;
 }
 .col-phai{
    height: 848px;
@@ -140,16 +140,17 @@ background-color: #aba9a9;
   border-radius: 5px;
 }
 .col-phai-1{
-    background-color: rgb(254, 254, 254);
+    background-color: #ededed;
     float: left;
     width: 95%;
 }
 .col-phai-1{
 height: 778px;
+
 }
 .col-phai-2{
     height: 290px;
-    background-color: rgb(254, 254, 254);
+    background-color: #ededed;
     float: left;
     width: 95%; 
 }
@@ -171,7 +172,6 @@ height: 778px;
 .phai{
   width: 30%;
   height: 250px;
- 
   float: right;
 }
 form{
@@ -198,21 +198,100 @@ form{
    height: 35px;
 }
 .ten5{
-    width: 100%;
     height: 50px;
     font-size: 18px;
     line-height: 2.5;
+    margin-top: 5%;
+    border-radius: 100px;
+   
+  text-align: center;
 }
 .ten4{
-    width: 98%;
-    height: 50px;
+   
+    height: 40px;
     font-size: 22px;
-    line-height: 2.5;
-    float: left;
-    margin-top: 3%;
-    margin-left: 5%;
+  line-height: 1.5;
+    
 }
 .u{
 float: right;
 margin-right: 28%;
+}
+.form-control{
+    width: 15%;
+    height: 120px;
+    border: 1px solid #ffb0b0;
+    border-radius: 100px;
+    padding-left: 3%;
+    margin-left: 2%;
+}
+.khung{
+    border-left: 1px solid rgb(187, 173, 173);
+    height: 760px;
+    float:right;
+    margin-top: -90%;
+}
+
+.phai{
+    float: right;
+    width: 26%;
+    height: 500px;
+    background-color: aqua;
+    margin-right: 4.5%;
+    margin-top: 3%;
+}
+.hieuung{
+    animation:examplee 4s infinite;
+  
+}
+.hoa{ 
+  position: relative;
+ 
+  height:  400px;
+  width: 380px;
+  display: block;
+}
+
+
+@keyframes examplee {
+    0%   {color: rgb(194, 131, 131);}
+  25%  {color: rgb(49, 245, 72);}
+  50%  {color: rgb(19, 122, 173) 30;}
+  100% {color: rgb(0, 32, 128);}
+
+  }
+
+
+  .glowing::before{
+    content: '';
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    background: linear-gradient(45deg, #e8f74d, #ff6600d9, #00ff66, #13ff13, #ad27ad, #bd2681, #6512b9, #ff3300de, #5aabde);
+    background-size: 400%;
+    width: calc(100% + 5px);
+    height: calc(100% + 5px);
+    z-index: -1;
+    animation: glower 20s linear infinite;
+  }
+  
+  @keyframes glower {
+    0% {
+      background-position: 0 0;
+    }
+    
+    50% {
+      background-position: 400% 0;
+    }
+    
+    100% {
+      background-position: 0 0;
+    }
+  }
+  .lo img{
+  width: 150px;
+  height: 150px;
+   border-radius: 75px;
+   margin-top: 2%;
+    margin: 0% auto;
 }

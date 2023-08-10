@@ -52,34 +52,7 @@
             ?>
         </form>
     </div>
-    <div class="col-phai-2 rounded-md my-1">
-        <h1 style="font-weight: 700; margin-left: 1.2%; width: 90%; margin-top: 1%;">Giá Tốt Hôm Nay <p id="countdown"
-                style="position: absolute; margin-left: 10%; margin-top: -1.22%;"></p>
-        </h1>
-        <h1 style="font-weight: 600; float: right; margin-top: -1.8%; color: aqua;">xem thêm ></h1>
-
-        <?php
-        // Kiểm tra nếu $spnew là một mảng và không rỗng
-        if (is_array($spnew) && count($spnew) > 0) {
-            foreach ($spnew as $sp) {
-                // Kiểm tra xem $sp có là một mảng hay không
-                    // Thêm các kiểm tra khác tùy theo cấu trúc dữ liệu của $sp
-        
-                    // Hiển thị thông tin sản phẩm
-                    ?>
-                    <div class="sp filtering my-2">
-                        <div class="sp2">
-                            <img src="<?php echo "Tên sản phẩm: " . $sp['Ten_hanghoa'] . "<br>"; ?>" alt="" class="w-24 h-20">
-                            <div class="price"><?php echo $sp['don_gia']; ?>.000<span style="color: brown; font-size: 15px;  position: absolute;">đ</span>
-                            </div>
-                            <div class="khung">
-                                <div class="daban"></div>
-                                <div class="chu">đã bán 2</div>
-                            </div>
-                        </div>
-                    </div>
-                    <?php
-                }
-            }
-        ?>
+ 
+            
+     
     </div>

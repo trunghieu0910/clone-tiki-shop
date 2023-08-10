@@ -4,7 +4,7 @@
  */
 $base_path = "/AdminLTE-3.2.0";
 function pdo_get_connection(){
-    $dburl = "mysql:host=localhost;dbname=baostore2;charset=utf8";
+    $dburl = "mysql:host=localhost;dbname=tiki12;charset=utf8";
     $username = 'root';
     $password = '';
 

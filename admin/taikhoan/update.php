@@ -36,6 +36,15 @@
                             <label>Địa chỉ</label>
                             <input class="form-control" type="text" name="diachi" value="<?=$diachi?>">
                         </div>
+
+                        <?php if (isset($image_dm) && ($image_dm != "")): ?>
+                <div class="form-group">
+                    <label for="img">Hình ảnh hiện tại</label><br>
+                    <img src="../upload/<?php echo $img; ?>" alt="Hình ảnh hiện tại" style="max-width: 200px;">
+                </div>
+                <input type="hidden" name="img" value="<?php echo $img; ?>">
+            <?php endif; ?>
+
                         <div class="col-md-6 form-group">
                             <input type="hidden" name="id_user" value="<?php if(isset($id_user )&&($id_user >0)) echo $id_user ;?>">
                             <input type="submit" value="Cập nhật" class="btn btn-success" name="capnhat">

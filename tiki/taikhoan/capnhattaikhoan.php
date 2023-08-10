@@ -24,74 +24,28 @@
 
     .ten {
         font: 30px;
-        color: #11ff00;
+       
         position: absolute;
+        
     }
     </style>
 </head>
-
-<body>
-    <?php
-
-if(is_array($chitietuser)){
-  extract($chitietuser);
-  $hinh=$img_path.$img;
-}
-// }
+<?php
+include "tiki/home.php"
 ?>
-    <header w-full>
-        <div class="logo ml-20 my-3"><img src="img/logo.png" alt=""></div>
-        <div class="sreach w-50 ml-20 my-3">
-            <form>
-                <i class="fas fa-search my-3 mx-3" style="position: absolute;"></i><input type="text" name="search"
-                    id="toggleButton" placeholder="Search..">
-
-                <button class="rounded-none  ..." style="margin-left: -13%;
-                        border-left: 1px solid; ;">tìm kiếm</button>
-                <div id="content"></div>
-            </form>
-        </div>
-        <div class="col-1 w-32 ml-6 " style="line-height: 2.2;     color: #518cff "><i
-                class="fas fa-house-user"></i>trang chủ</div>
-        <div class="col-1 w-28 mx-3   " style="text-align: center; line-height: 2.2;color: #898982"><i
-                class="fas fa-crown mx-1"></i>Astra</div>
-        <div class="col-1 w-46" style="line-height: 2.2; color: #898982">
-            <div class="ul1"><a href="index2.php?act=dangky"><i class="fas fa-smile"></i></a>
-            </div>
-        </div>
-        </a>
-        </div>
-        <div class="col-1 w-4 mx-3  "><i class="fas fa-cart-plus" style="color: #518cff"></i></div>
-        <div class="h2  w-50 mx-20">
-            <ol>
-                <li>trái cây</li>
-                <li>thịt</li>
-                <li>trứng</li>
-                <li>rau củ quả</li>
-                <li>sữa, bơ, phô mai</li>
-                <li>hải sản</li>
-                <li>thịt</li>
-                <li>trứng</li>
-                <li>thịt</li>
-                <li>trứng</li>
-            </ol>
-        </div>
-        <div class="h3 w-96  ml-0 "><i class="fas fa-map-marker " style="color: #898982"></i><span
-                style="color: #898982">Giao đến:</span> <u>Q. 1, P. Bến Nghé, Hồ Chí Minh</u></div>
-        <div class="sale w-full" style="line-height: 2.2;">mỗi ngày, tự động áp dụng không cần săn mã</div>
-    </header>
-
+<body>
+       
     <article w-full mt-3 id="btn1" id="content">
         <section>
-            <div class="col-trai w-1/5 float-left">
+            <div class="col-trai w-1/5 float-left  ">
                 <div class="col-trai-1 w-3/4 my-3.5">
                     <div class="menudoc1 menudoc">
                         <h2>Trang chủ > Thông tin tài khoản</h2>
                         <br>
                         <div class="taikhoan">
-                            <img src="img/logo.png" alt="" style="width: 25%; float: left;">
+                            <img src="upload/<?=$img?>" alt="" style="width: 25%;float: left;height: 47px;border-radius: 50px;">
                             <div class="uu" style="margin-left: 35%;">
-                                <h1>tài khoản của<br> value="<?=$ten_user?>"</h1>
+                                <h1>tài khoản của <br> <?=$ten_user?></h1>
                             </div>
                         </div>
                         <ul style="margin-top: 5%;">
@@ -182,103 +136,93 @@ if(is_array($chitietuser)){
                 </div>
         </section>
         <section>
+
+
+        
+            <?php
+            if(isset($_SESSION['ten_user'])&&(is_array($_SESSION['ten_user']))){
+                extract($_SESSION['ten_user']);
+            }
+            ?>
+            <form action="index2.php?act=capnhattaikhoan" method="post">
             <div class="col-phai w-4/5 float-right ">
                 <div class="ten1s" style="margin-top: 1.5%; font-size: 25px;">
                     <h1>Thông tin tài khoản</h1>
                 </div>
-                <div class="col-phai-1 rounded-md my-4">
+                <div class="col-phai-1 rounded-md my-4  ">
+<div class="hw ">
+                    <div class="trai ">
+                        <form action="index2.php?act=capnhattaikhoan"method="POST">
+                        <br>
+                         <label class="hieuung"> Tên Khách Hàng  </label>
+                         <div class="ten4">
+                         <input type="text" name="ten_user" value="<?=$ten_user?>">
+                         </div>
 
-                    <div class="trai">
+<br>
+                         <label class="hieuung "> Số Điện Thoại   </label>
+                         <div class="ten4 ">
+                         <input type="text" name="dienthoai" value="<?=$dienthoai?>" >
+                         </div>
+                         <br>
+                         <label class="hieuung">Email </label>
+                         <div class="ten4">
+                         <input type="text" name="email"  value="<?=$email?>" >
+                         </div>
 
-                        <div class="h">thông tin tài khoản </div>
-                        <form action="index2.php?act=capnhattaikhoan" method="POST">
-                            <?php if (isset($img) && ($img != "")): ?>
-                            <div class="ten5">
-                                <label for="current_image">Hình ảnh hiện tại</label><br>
-                                <img src="../../upload/1.webp" alt="Hình ảnh hiện tại"
-                                    style="max-width: 200px;">
-                            </div>
-                            <input type="hidden" name="old_img" value="<?php echo $img; ?>">
-                            <?php endif; ?>
+<br>
+                         <label class="hieuung"> Địa chỉ </label>
+                         <div class="ten4">
+                         <input type="text" name="diachi" value="<?=$diachi?>">
+                         </div>
 
-                            <div class="ten5">
-                                <label for="img">Ảnh mới (nếu muốn thay đổi)</label>
-                                <input type="file" class="form-control" name="img" id="img">
-                            </div>
-
-
-                            <div class="ten5">
-                                <label style="margin-left: 2%;">Họ và tên</label>
-                                <input type="text" class="txt" style="width: 35%; " name="ten_user"
-                                    value="<?=$ten_user?>">
-                            </div>
-
-                            <div class="ten5">
-                                <label style="margin-left: 2%;">password</label>
-                                <input type="password" name="Mat_khau" class="txt"
-                                    style="width: 35%; margin-top: 2%; border: 1px solid #b4c1c1;"
-                                    value="<?=$Mat_khau?>">
-                            </div>
-                            <div class="ten4">
-                                <label>Ngày sinh</label>
-                                <input type="date" class="txt"
-                                    style="width: 53%; border: 1px solid;  margin-top: 2%; float: right; margin-right: 17%;">
-                            </div>
-                            <div class="ten4">
-                                <label>Giới tính</label>
-                                <div class="u">
-                                    <input type="radio" id="html" name="fav_language" value="HTML">
-                                      <label for="html">nam</label>
-                                      <input type="radio" id="css" name="fav_language" value="CSS">
-                                      <label for="css">nữ</label>
-                                      <input type="radio" id="javascript" name="fav_language" value="JavaScript">
-                                      <label for="javascript">khác</label>
-                                </div>
-
-                                <div class="ten4">
-                                    <label>Giới tính</label>
-                                    <select style="float: right;
-                                        border: 1px solid;
-                                        width: 70%;">
-                                        <option>Danh sách 01</option>
-                                        <option>Danh sách 02</option>
-                                        <option>Danh sách 03</option>
-                                        <option>Danh sách 03</option>
-                                    </select>
-                                </div>
+<br>
 
 
-                                <div class="bo"></div>
+                         <br>
 
-                                <div class="phai">
-                                    <div class="h">Số điện thoại và Email</div>
-                                    <div class="ten5">
-                                        <label style="margin-left: 2%;">email</label>
-                                        <input type="email" name="email" class="txt" style="width: 35%; margin-top: 2%;"
-                                            value="<?=$email?>">
-                                    </div>
-                                    <div class="h">quản lý nhà bán hàng admin</div>
-                                    <div class="ten5">
-                                        <label style="margin-left: 2%;">Họ và tên 0122654</label>
-                                        <input type="submit" name="capnhat" class="txt"
-                                            style="width: 35%; margin-top: 2%;">
-                                    </div>
+<?php if (isset($image_dm) && ($image_dm != "")): ?>
+                <div class="form-group">
+                    <label for="img">Hình ảnh hiện tại</label><br>
+                    <img src="../upload/<?php echo $img; ?>" alt="Hình ảnh hiện tại" style="max-width: 200px;">
+                </div>
+                <input type="hidden" name="img" value="<?php echo $img; ?>">
+            <?php endif; ?>
 
-                                    <div class="ten5">
-                                        <label style="margin-left: 2%;">Họ và tên 0122654</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <input type="hidden" name="id_user" value="<?=$id_user?>">
-                            <input type="submit" value="cap nhat" name="capnhat">
+            <div class="form-group">
+                <label for="img">Cập nhật Avata</label>
+              <input type="file" class="form-control"   name="img" id="img" >
+            </div>
+            <br>
+                         <label> </label>
+                         <div class="ten4">
+                         <input type="hidden"  name="id_user"  value="<?=$id_user?>" >
+                         <input type="submit"  name="capnhat" value="cập nhật ">
+                         </div>
+                       
                         </form>
 
+                        <div class="khung"></div>
 
-
+                        </form>          
+</div>
+<div class="phai  ">
+    <h1 style="text-align: center;font-size: 20px;">Thông Tin Khách Hàng</h1>
+<div class=" ten4">
+<div class="lo">  <img src="upload/<?=$img?>" alt=""><p style="text-align: center;font-size: 20px;">Avata</p> </div>
+<div class="ten"><i class="fas fa-users" style="color: #38c41c; padding: 13px 18px;margin-top: 3%;"> Tên Khách Hàng:<?=$ten_user?></div></i>
+<br>
+<div class="ten"><i class="fas fa-envelope" style="color: #78e60a; padding: 13px 18px; margin-top: 3%;">  Email:<?=$email?></div></i>
+<br>
+<div class="ten"><i class="fas fa-phone-volume" style="color: #78e60a; padding: 13px 18px;margin-top: 3%;"> Điện Thoại:<?=$dienthoai?></div></i>
+<br>
+<div class="ten"><i class="fas fa-map-pin" style="color: #78e60a; padding: 13px 18px;margin-top: 6%;"> Địa chỉ:<?=$diachi?></div></i>
+</div>
+</div>
         </section>
-
+       
     </article>
+
     <footer class="" style="background-color:   #ededed;">
         <div class="flex p-4 w-full">
             <div class="w-1/5">
