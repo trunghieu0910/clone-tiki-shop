@@ -12,19 +12,6 @@ if (!isset($_SESSION['mycart']))
 if (isset($_GET['act']) && $_GET['act'] != "") {
     $act = $_GET['act'];
     switch ($act) {
-        case 'guibinhluan';
-        if (isset($_POST['guibinhluan']) && ($_POST['guibinhluan'])) {
-            $id_user = $_POST['id_user'];
-            $id_SP = $_POST['id_SP'];
-            $noidung_Bl = $_POST['noidung'];
-            $ngaybinhluan = '12-12-2022';
-            insert_binhluan($noidung_Bl,$id_user,$id_SP,$ngaybinhluan);
-        }
-
-        $onebl=loadone_bl($id_user);
-        $users = loadone_user($id_user);
-        include 'tiki/chitietsp.php';
-        break;
 
         case 'addcart':
             if (isset($_POST['addsp']) && $_POST['addsp']) {

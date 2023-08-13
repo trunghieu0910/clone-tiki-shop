@@ -63,19 +63,19 @@
                         <?php echo $ten_user; ?>
                     </a>
                     <div class="ul2">
-                    <ul>
-                        <li><a href="index2.php?act=chitiettaikhoan&id_user=<?php echo $id_user ?>">Thông Tin Tài
-                                khoản</a>
-                        <li><a href="index2.php?act=quenmk">Quên Mật khẩu </a></li>
-                        <li><a href="index2.php?act=thoat">Đăng xuất</a></li>
-                        <?php if($vai_tro==1){ ?>
-                        <li><a href="admin/index.php">Đăng nhập admin</a>
-                        <?php
-                        }
-                        ?>
-                    </li>
+                        <ul>
+                            <li><a href="index2.php?act=chitiettaikhoan&id_user=<?php echo $id_user ?>">Thông Tin Tài
+                                    khoản</a>
+                            <li><a href="index2.php?act=quenmk">Quên Mật khẩu </a></li>
+                            <li><a href="index2.php?act=thoat">Đăng xuất</a></li>
+                            <?php if ($vai_tro == 1) { ?>
+                                <li><a href="admin/index.php">Đăng nhập admin</a>
+                                    <?php
+                            }
+                            ?>
+                            </li>
 
-                </div>
+                    </div>
                 </div>
                 </a>
             </div>
@@ -89,9 +89,9 @@
             <?php
         }
         ?>
-        <div class="col-1 relative w-16"> <a href="tiki/cart/cart1.php"><i
-                    class="fas fa-cart-plus mt-2 ml-3" style="color: #518cff"></i>
-                <span class="absolute top-1 left-2 text-red-700 font-bold " >
+        <div class="col-1 relative w-16"> <a href="tiki/cart/cart1.php"><i class="fas fa-cart-plus mt-2 ml-3"
+                    style="color: #518cff"></i>
+                <span class="absolute top-1 left-2 text-red-700 font-bold ">
                     <?php
                     $totalQuantity = isset($_SESSION['mycart']) ? count($_SESSION['mycart']) : 0;
                     echo $totalQuantity;
@@ -125,6 +125,7 @@
     foreach ($bills as $bill) {
         extract($bill);
     }
+    $chitietbill = loadall_hoadon($id_HD);
     ?>
     <div class="container">
         <div class="row">
@@ -142,25 +143,33 @@
                                     <div class="w-80">
                                         <span class="">Tên Khách hàng: </span>
                                     </div>
-                                    <span class="text-orange-600"><?php echo $ten_user ?></span>
+                                    <span class="text-orange-600">
+                                        <?php echo $ten_user ?>
+                                    </span>
                                 </div>
                                 <div class="flex mb-2 border-b border-black border-dotted">
                                     <div class="w-80">
                                         <span class="">Địa chỉ: </span>
                                     </div>
-                                    <span class="text-orange-600"><?php echo $diachi ?></span>
+                                    <span class="text-orange-600">
+                                        <?php echo $diachi ?>
+                                    </span>
                                 </div>
                                 <div class="flex mb-2 border-b border-black border-dotted">
                                     <div class="w-80">
                                         <span class="">Số điện thoại: </span>
                                     </div>
-                                    <span class="text-orange-600"><?php echo $dienthoai ?></span>
+                                    <span class="text-orange-600">
+                                        <?php echo $dienthoai ?>
+                                    </span>
                                 </div>
                                 <div class="flex border-b border-black border-dotted">
                                     <div class="w-80">
                                         <span class="">Email: </span>
                                     </div>
-                                    <span class="text-orange-600"><?php echo $email ?></span>
+                                    <span class="text-orange-600">
+                                        <?php echo $email ?>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -178,25 +187,33 @@
                                             <div class="w-80">
                                                 <span class="">Mã hóa đơn: </span>
                                             </div>
-                                            <span class="text-orange-600">HD<?php echo $id_HD ?></span>
+                                            <span class="text-orange-600">HD
+                                                <?php echo $id_HD ?>
+                                            </span>
                                         </div>
                                         <div class="flex mb-2 border-b border-black border-dotted">
                                             <div class="w-80">
                                                 <span class="">Ngày xuất hóa đơn: </span>
                                             </div>
-                                            <span class="text-orange-600"><?php echo $Ngay ?></span>
+                                            <span class="text-orange-600">
+                                                <?php echo $Ngay ?>
+                                            </span>
                                         </div>
                                         <div class="flex mb-2 border-b border-black border-dotted">
                                             <div class="w-80">
                                                 <span class="">Phương thức thanh toán: </span>
                                             </div>
-                                            <span class="text-orange-600"><?php echo $pttt ?></span>
+                                            <span class="text-orange-600">
+                                                <?php echo $pttt ?>
+                                            </span>
                                         </div>
                                         <div class="flex border-b border-black border-dotted    ">
                                             <div class="w-80">
                                                 <span class="">Tổng tiền: </span>
                                             </div>
-                                            <span class="text-orange-600"><?php echo $Tongtien ?>.000đ</span>
+                                            <span class="text-orange-600">
+                                                <?php echo $Tongtien ?>.000đ
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -223,77 +240,40 @@
                         </div>
                         <!-- end row -->
 
-                        <div class="py-2">
+                        <div class="py-2 mx-20">
                             <h5 class="font-size-15 text-xl font-bold">Chi tiết đơn hàng</h5>
-
                             <div class="table-responsive">
                                 <table class="table align-middle table-nowrap table-centered mb-0">
                                     <thead>
                                         <tr>
-                                            <th style="width: 70px;">No.</th>
-                                            <th>Item</th>
-                                            <th>Price</th>
-                                            <th>Quantity</th>
-                                            <th class="text-end" style="width: 120px;">Total</th>
+                                            <th style="width: 70px;">id</th>
+                                            <th>Tên sản phẩm</th>
+                                            <th>Đơn giá</th>
+                                            <th>Số lượng</th>
+                                            <th>Ảnh</th>
+                                            <th class="text-end" style="width: 120px;">Tổng tiền</th>
                                         </tr>
                                     </thead><!-- end thead -->
                                     <tbody>
-                                        <tr>
-                                            <th scope="row">01</th>
-                                            <td>
-                                                <div>
-                                                    <h5 class="text-truncate font-size-14 mb-1">Black Strap A012</h5>
-                                                    <p class="text-muted mb-0">Watch, Black</p>
-                                                </div>
-                                            </td>
-                                            <td>$ 245.50</td>
-                                            <td>1</td>
-                                            <td class="text-end">$ 245.50</td>
-                                        </tr>
-                                        <!-- end tr -->
-                                        <tr>
-                                            <th scope="row">02</th>
-                                            <td>
-                                                <div>
-                                                    <h5 class="text-truncate font-size-14 mb-1">Stainless Steel S010
-                                                    </h5>
-                                                    <p class="text-muted mb-0">Watch, Gold</p>
-                                                </div>
-                                            </td>
-                                            <td>$ 245.50</td>
-                                            <td>2</td>
-                                            <td class="text-end">$491.00</td>
-                                        </tr>
-                                        <!-- end tr -->
-                                        <tr>
-                                            <th scope="row" colspan="4" class="text-end">Sub Total</th>
-                                            <td class="text-end">$732.50</td>
-                                        </tr>
-                                        <!-- end tr -->
-                                        <tr>
-                                            <th scope="row" colspan="4" class="border-0 text-end">
-                                                Discount :</th>
-                                            <td class="border-0 text-end">- $25.50</td>
-                                        </tr>
-                                        <!-- end tr -->
-                                        <tr>
-                                            <th scope="row" colspan="4" class="border-0 text-end">
-                                                Shipping Charge :</th>
-                                            <td class="border-0 text-end">$20.00</td>
-                                        </tr>
-                                        <!-- end tr -->
-                                        <tr>
-                                            <th scope="row" colspan="4" class="border-0 text-end">
-                                                Tax</th>
-                                            <td class="border-0 text-end">$12.00</td>
-                                        </tr>
-                                        <!-- end tr -->
-                                        <tr>
-                                            <th scope="row" colspan="4" class="border-0 text-end">Total</th>
-                                            <td class="border-0 text-end">
-                                                <h4 class="m-0 fw-semibold">$739.00</h4>
-                                            </td>
-                                        </tr>
+                                        <?php
+                                        foreach ($chitietbill as $ctbill) {
+                                            extract($ctbill);
+                                            echo '<tr>
+                                                    <th scope="row">'.$id_HDchitiet.'</th>
+                                                    <td>
+                                                        <div>
+                                                            <h5 class="text-truncate font-size-14 mb-1">'.$Ten_hanghoa.'</h5>
+                                                            <p class="text-muted mb-0">Watch, Black</p>
+                                                        </div>
+                                                    </td>
+                                                    <td>'.$dongia.'.000đ</td>
+                                                    <td>'.$soluong.'</td>
+                                                    <td><img src="../'.$image_sp.'" width=40></td>
+                                                    <td class="text-end">'.$thanh_tien.'.000đ</td>
+                                                </tr>
+                                                ';
+                                        }
+                                        ?>
                                         <!-- end tr -->
                                     </tbody><!-- end tbody -->
                                 </table><!-- end table -->
@@ -302,7 +282,7 @@
                                 <div class="float-end">
                                     <a href="javascript:window.print()" class="btn btn-success me-1"><i
                                             class="fa fa-print"></i></a>
-                                    <a href="#" class="btn btn-primary w-md">Send</a>
+                                    <a href="#" class="btn btn-primary w-md">In</a>
                                 </div>
                             </div>
                         </div>

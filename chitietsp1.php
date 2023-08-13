@@ -1,7 +1,8 @@
-<?php 
+<?php
 include "model/pdo.php";
 include "model/sanpham.php";
 include "model/danhmuc.php";
+include "model/binhluan.php";
 include "global.php";
 if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
     $act = $_GET['act'];
@@ -10,20 +11,33 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
 
 
         case 'sanphamchitiet':
-if(isset($_GET['id_SP'])&&($_GET['id_SP']>0)){
-$id_SP=$_GET['id_SP'];
-$onesp=loadone_sanpham($id_SP);
-include  "tiki/chitietsp.php";
-}else{
-    
-}
-           break;
+            if (isset($_GET['id_SP']) && ($_GET['id_SP'] > 0)) {
+                $id_SP = $_GET['id_SP'];
+                $onesp = loadone_sanpham($id_SP);
+                $loadbinhluan = loadall_binhluan($id_SP);
+                include "tiki/chitietsp.php";
+            } else {
 
+            }
+            break;
+        case 'guibinhluan':
+            if (isset($_POST['guibinhluan']) && ($_POST['guibinhluan'])) {
+                $id_user = $_POST['id_user'];
+                $id_SP = $_POST['id_SP'];
+                $noidung_Bl = $_POST['noidung'];
+                $ngaybinhluan = '2023-08-13';
+                insert_binhluan($noidung_Bl,$id_user,$id_SP,$ngaybinhluan);
+                $onesp = loadone_sanpham($id_SP);
+                $loadbinhluan = loadall_binhluan($id_SP);
+                // print('Cảm ơn bạn đã góp ý!');
+                header('Location: chitietsp1.php?act=sanphamchitiet&id_SP='.$id_SP.'');
+                break;
+            }
 
 
     }
 } else {
-    
+
 }
 
 

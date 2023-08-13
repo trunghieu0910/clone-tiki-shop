@@ -43,7 +43,7 @@
                 <div id="content"></div>
             </form>
         </div>
-        <div class="col-1 w-32 ml-6 " style="line-height: 2.2; color: #518cff "><a href="../../index.php"><i
+        <div class="col-1 w-32 ml-6 " style="line-height: 2.2; color: #518cff "><a href="index.php"><i
                     class="fas fa-house-user"></i>trang chủ</a></div>
         <div class="col-1 w-28 mx-3" style="text-align: center; line-height: 2.2;color: #898982"><i
                 class="fas fa-crown mx-1"></i>Astra</div>

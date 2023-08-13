@@ -12,39 +12,41 @@
         integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <?php
-   session_start(); 
- ?>
+    session_start();
+    ?>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"
         integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Document</title>
 
     <style>
-    .slick-initialized .slick-slide {
-        margin: 0 10px;
-    }
+        .slick-initialized .slick-slide {
+            margin: 0 10px;
+        }
 
-    .ten {
-        font: 30px;
-        color: #11ff00;
-        position: absolute;
-    }
-    .h9{
-        flex-wrap: wrap;
+        .ten {
+            font: 30px;
+            color: #11ff00;
+            position: absolute;
+        }
 
-    }
-    .k12{
-        box-sizing: border-box;
-        border: 1px solid rgb(244, 244, 244);
+        .h9 {
+            flex-wrap: wrap;
+
+        }
+
+        .k12 {
+            box-sizing: border-box;
+            border: 1px solid rgb(244, 244, 244);
             background-color: beige;
             z-index: 99;
             box-sizing: content-box;
-    }
+        }
     </style>
 </head>
 
 <body>
-<header w-full>
+    <header w-full>
         <div class="logo ml-20 my-3"><img src="tiki/img/logo1.png" alt=""></div>
         <div class="sreach w-50 ml-20 my-3">
             <form>
@@ -60,6 +62,9 @@
                     class="fas fa-house-user"></i>trang chủ</a></div>
         <div class="col-1 w-28 mx-3" style="text-align: center; line-height: 2.2;color: #898982"><i
                 class="fas fa-crown mx-1"></i>Astra</div>
+        
+        
+        
         <?php
         if (isset($_SESSION['ten_user'])) {
             extract($_SESSION['ten_user']);
@@ -69,19 +74,19 @@
                         <?php echo $ten_user; ?>
                     </a>
                     <div class="ul2">
-                    <ul>
-                        <li><a href="index2.php?act=chitiettaikhoan&id_user=<?php echo $id_user ?>">Thông Tin Tài
-                                khoản</a>
-                        <li><a href="index2.php?act=quenmk">Quên Mật khẩu </a></li>
-                        <li><a href="index2.php?act=thoat">Đăng xuất</a></li>
-                        <?php if($vai_tro==1){ ?>
-                        <li><a href="admin/index.php">Đăng nhập admin</a>
-                        <?php
-                        }
-                        ?>
-                    </li>
+                        <ul>
+                            <li><a href="index2.php?act=chitiettaikhoan&id_user=<?php echo $id_user ?>">Thông Tin Tài
+                                    khoản</a>
+                            <li><a href="index2.php?act=quenmk">Quên Mật khẩu </a></li>
+                            <li><a href="index2.php?act=thoat">Đăng xuất</a></li>
+                            <?php if ($vai_tro == 1) { ?>
+                                <li><a href="admin/index.php">Đăng nhập admin</a>
+                                    <?php
+                            }
+                            ?>
+                            </li>
 
-                </div>
+                    </div>
                 </div>
                 </a>
             </div>
@@ -95,9 +100,9 @@
             <?php
         }
         ?>
-        <div class="col-1 relative w-16"> <a href="tiki/cart/cart1.php"><i
-                    class="fas fa-cart-plus mt-2 ml-3" style="color: #518cff"></i>
-                <span class="absolute top-1 left-2 text-red-700 font-bold " >
+        <div class="col-1 relative w-16"> <a href="tiki/cart/cart1.php"><i class="fas fa-cart-plus mt-2 ml-3"
+                    style="color: #518cff"></i>
+                <span class="absolute top-1 left-2 text-red-700 font-bold ">
                     <?php
                     $totalQuantity = isset($_SESSION['mycart']) ? count($_SESSION['mycart']) : 0;
                     echo $totalQuantity;
@@ -124,4 +129,3 @@
                 style="color: #898982">Giao đến:</span> <u>Q. 1, P. Bến Nghé, Hồ Chí Minh</u></div>
         <div class="sale w-full" style="line-height: 2.2;">mỗi ngày, tự động áp dụng không cần săn mã</div>
     </header>
-    
