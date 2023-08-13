@@ -409,7 +409,8 @@ if (is_array($onesp)) {
                             <img src="tiki/img/comment-img-1.webp" class="w-32 h-32 mr-2" alt="">
                             <img src="tiki/img/comment-img-1.webp" class="w-32 h-32 mr-2" alt="">
                         </div>
-                        <p class="text-gray-500">Đánh giá vào 2 năm trước - Đã dùng 4 giờ</p>
+                 
+
                         <div class="my-2">
                             <button type="button" class="btn btn-outline-primary text-sm font-bold h-8">Hữu ích
                                 (9)</button>
@@ -418,7 +419,17 @@ if (is_array($onesp)) {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>  
+         
+            <form method="post" action="submit_comment.php">
+    <input type="hidden" name="id_SP" value="<?php echo $id_SP; ?>">
+    <input type="hidden" name="id_user" value="<?php echo $id_user; ?>">
+    <textarea name="comment_text" rows="4" cols="50" placeholder="Nhập bình luận của bạn"></textarea>
+    <button type="submit" name="submit_comment">Gửi bình luận</button>
+</form>
+
+
+
             <div class="float-right mr-16">
                 <nav aria-label="Page navigation">
                     <ul class="pagination justify-content-center mb-8">
