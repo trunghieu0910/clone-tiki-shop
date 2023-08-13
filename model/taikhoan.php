@@ -50,9 +50,9 @@ function checkid_user($ten_user, $Mat_khau) {
     $sql = "SELECT * FROM user WHERE ten_user = '$ten_user' AND Mat_khau = '$Mat_khau'";
     return pdo_query_one($sql);
 }
-function update_user($id_user, $ten_user, $Mat_khau, $email, $img) {
-    $sql = "UPDATE user SET ten_user='$ten_user', email='$email', Mat_khau='$Mat_khau', img ='$img' WHERE id_user='$id_user'";
+function update_user($id_user, $ten_user, $email,  $dienthoai, $diachi ,$img) {
+    $sql = "UPDATE user SET ten_user='$ten_user', email='$email', dienthoai='$dienthoai', diachi='$diachi' , img='$img' WHERE id_user='$id_user'";
     pdo_execute($sql);
-}      
+}    
     
 ?>

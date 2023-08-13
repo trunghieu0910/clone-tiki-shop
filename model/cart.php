@@ -105,7 +105,7 @@ function loadone_cthd($id_HDchitiet)
 
 function loadall_hoadon($id_HD)
 {
-    $sql = "select * from hoadon where id_HD=" . $id_HD;
+    $sql = "select * from chitiethoadon where id_HD=" . $id_HD;
     $bill = pdo_query($sql);
     return $bill;
 }
