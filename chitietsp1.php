@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "model/pdo.php";
 include "model/sanpham.php";
 include "model/danhmuc.php";
@@ -11,13 +12,14 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
 
 
         case 'sanphamchitiet':
-            if (isset($_GET['id_SP']) && ($_GET['id_SP'] > 0)) {
+            if (isset($_GET['id_SP']) && (isset($_SESSION['ten_user']))) {
                 $id_SP = $_GET['id_SP'];
                 $onesp = loadone_sanpham($id_SP);
                 $loadbinhluan = loadall_binhluan($id_SP);
+                $loadimg = loadall_img_id($id_SP);
                 include "tiki/chitietsp.php";
             } else {
-
+                header('Location: tiki/taikhoan/dangky.php');
             }
             break;
         case 'guibinhluan':

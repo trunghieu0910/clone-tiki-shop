@@ -51,6 +51,7 @@
                     extract($sanpham);
                     $suasp = "index.php?act=suasp&id_SP=" . $id_SP;
                     $xoasp = "index.php?act=xoasp&id_SP=" . $id_SP;
+                    $imgsp = "index.php?act=imgsp&id_SP=" . $id_SP;
 
                     $hinhpath = '' . $image_sp;
                     if (is_file($hinhpath)) {
@@ -89,10 +90,11 @@
             <td>' . $soluotxem . '</td>
             <td>' . $motangan . '</td>
             <td>' . $motadai . '</td>
-            <td><a href="' . $suasp . '"><input type="button" value="Sửa" class="btn btn-success"></a> <a href="' . $xoasp . '"><input type="button" value="Xóa" class="btn btn-warning"></a></td>
+            <td><a href="' . $suasp . '"><input type="button" value="Sửa" class="btn btn-success"></a>
+             <a href="' . $xoasp . '"><input type="button" value="Xóa" class="btn btn-warning"></a>
+             <a href="' . $imgsp . '"><input type="button" value="Ảnh" class="btn btn-warning"></a></td>
         </tr>
     ';
-                    // print_r($sanpham);
                 }
                 ?>
             </tbody>

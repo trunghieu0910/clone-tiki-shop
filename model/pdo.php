@@ -40,8 +40,6 @@ function pdo_execute_pay($sql, $params = []) {
         $stmt->execute($params);
     } catch (PDOException $e) {
         throw $e;
-    } finally {
-        unset($conn);
     }
 }
 
@@ -141,6 +139,35 @@ function pdo_query_one($sql){
         unset($conn);
     }
 }
+
+function pdo_querys($sql, $args = []) {
+    try {
+        $conn = pdo_get_connection();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute($args);
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $rows;
+    } catch(PDOException $e) {
+        throw $e;
+    } finally {
+        unset($conn);
+    }
+}
+
+function pdo_query_ones($sql, $args = []) {
+    try {
+        $conn = pdo_get_connection();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute($args);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row;
+    } catch(PDOException $e) {
+        throw $e;
+    } finally {
+        unset($conn);
+    }
+}
+
 
 
 function pdo_query_one1($sql, $sql_args = array()) {

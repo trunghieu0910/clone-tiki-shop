@@ -76,8 +76,14 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
             break;
 
         case 'pay':
+            if (empty($_POST['ten_user']) || empty($_POST['diachi']) || empty($_POST['dienthoai']) || empty($_POST['email'])) {
+                echo 'Vui lòng điền đầy đủ thông tin!';
+                echo '<a href="index.php"><i class="fas fa-house-user"></i>trang chủ</a>';
+                break;
+            }
             if (isset($_SESSION['mycart']) && is_array($_SESSION['mycart']) && count($_SESSION['mycart']) > 0) {
                 // Tạo hóa đơn mới
+                $error='';
                 $Ngay = "2023-08-04";
                 $Tongtien = $_POST['ttien']; // Tính tổng tiền từ giỏ hàng
                 $id_user = $_POST['id_user']; // Thay thế bằng cách lấy ID người dùng đã đăng nhập
@@ -87,9 +93,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                 $pttt = $_POST['pttt']; // Lấy phương thức thanh toán từ form
                 $email = $_POST['email']; // Lấy email từ form
                 $addcart = insert_donhang($ten_user, $diachi, $dienthoai, $email, $Ngay, $Tongtien, $pttt, $id_user);
-                // $id_HD = pdo_last_insert_id();
-                    $id_HD = 5;
-                    // print_r($id_HD);exit;
+                    $id_HD = $addcart;
                 $thanh_tien= 0;
                 foreach ($_SESSION['mycart'] as $cart_item) {
                     $tongtien = $cart_item[2] * $cart_item[4]; // Tính thành tiền cho mỗi sản phẩm
@@ -99,12 +103,15 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                     $dongia = $cart_item[2];
                     $Ten_hanghoa = $cart_item[1];
                     $image_sp = $cart_item[3];
-                    // $id_HD = $addcart;
                     insert_hoadon($id_SP, $image_sp, $Ten_hanghoa, $dongia, $soluong, $thanh_tien, $id_HD);
                 }
                 $users = loadone_user($id_user);
                 unset($_SESSION['mycart']);
                 header('Location: ./tiki/cart/bill.php?id_user='.$id_user.'');
+            }else {
+                echo 'Bạn không có sản phẩm nào trong giỏ!';
+                echo '<a href="index.php"><i
+                class="fas fa-house-user"></i>trang chủ</a>';
             }
 
             break;
