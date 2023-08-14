@@ -76,14 +76,21 @@ function insert_donhang($ten_user, $diachi, $dienthoai, $email, $Ngay, $Tongtien
     
     $params = [$ten_user, $diachi, $dienthoai, $email, $Ngay, $Tongtien, $pttt, $id_user];
     
-    pdo_execute_pay($sql, $params);
-    
-    // Lấy giá trị id_HD cuối cùng được thêm vào
-    $conn = pdo_get_connection();
-    $lastInsertId = $conn->lastInsertId();
-    // echo $lastInsertId;
-    return $lastInsertId;
+    try {
+        $conn = pdo_get_connection();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute($params);
+        
+        // Lấy giá trị id_HD cuối cùng được thêm vào
+        $lastInsertId = $conn->lastInsertId();
+        return $lastInsertId;
+    } catch (PDOException $e) {
+        throw $e;
+    } finally {
+        unset($conn);
+    }
 }
+
 
 function insert_hoadon($id_SP, $image_sp, $Ten_hanghoa, $dongia, $soluong, $thanh_tien, $id_HD)
 {
@@ -103,11 +110,25 @@ function loadone_cthd($id_HDchitiet)
     return $bill;
 }
 
+function loadone_hoadons($id_HD)
+{
+    $sql = "select * from hoadon where id_HD = ?";
+    $bill = pdo_query_ones($sql, [$id_HD]);
+    return $bill;
+}
+
+function loadall_cthd($id_HD)
+{
+    $sql = "select * from chitiethoadon where id_HD = ?";
+    $bills = pdo_querys($sql, [$id_HD]);
+    return $bills;
+}
+
 function loadall_hoadon($id_HD)
 {
-    $sql = "select * from chitiethoadon where id_HD=" . $id_HD;
-    $bill = pdo_query($sql);
-    return $bill;
+    $sql = "select * from chitiethoadon where id_HD = ?";
+    $bills = pdo_querys($sql, [$id_HD]);
+    return $bills;
 }
 
 function loadone_hoadon($id_user)
@@ -167,15 +188,15 @@ function bill_chitiet($listbill)
         ';
 
     foreach ($listbill as $hoadon) {
-        $hinh = $img_path . $hoadon['img'];
-        $tong += $hoadon['thanhtien'];
+        $hinh = $img_path . $hoadon['image_sp'];
+        $tong += $hoadon['thanh_tien'];
 
         echo '
                 <tr>
-                    <td class="align-middle table-primary border border-primary"><img src="' . $hinh . '" alt="" style="width: 50px;"> ' . $hoadon['name'] . '</td>
-                    <td class="align-middle table-primary border border-primary">$' . $hoadon['price'] . '</td>
+                    <td class="align-middle table-primary border border-primary"><img src="' . $hinh . '" alt="" style="width: 50px;"> ' . $hoadon['Ten_hanghoa'] . '</td>
+                    <td class="align-middle table-primary border border-primary">$' . $hoadon['dongia'] . '</td>
                     <td class="align-middle table-primary border border-primary">' . $hoadon['soluong'] . '</td>
-                    <td class="align-middle table-primary border border-primary">$' . $hoadon['thanhtien'] . '</td>
+                    <td class="align-middle table-primary border border-primary">$' . $hoadon['thanh_tien'] . '</td>
                 </tr>
             ';
         $i += 1;

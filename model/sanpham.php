@@ -4,9 +4,20 @@ function insert_sanpham($soluotxem, $soluongban, $Ten_hanghoa, $don_gia, $giamgi
     $sql = "insert into sanpham(soluotxem, soluongban, Ten_hanghoa,don_gia,giamgia,hot,ngaynhap,so_luong,id_thuonghieu,id_danhmuc,motangan,motadai,image_sp) value ('($soluotxem','$soluongban','$Ten_hanghoa','$don_gia','$giamgia','$hot','$ngaynhap','$so_luong','$id_thuonghieu','$id_danhmuc','$motangan','$motadai','$image_sp')";
     pdo_execute($sql);
 }
+
+function insert_imgsp($id_SP, $duong_dan_anh)
+{
+    $sql = "INSERT INTO img_sp (id_SP, duong_dan_anh) VALUES ('$id_SP', '$duong_dan_anh')";
+    pdo_execute($sql);
+}
 function delete_sanpham($id_SP)
 {
     $sql = "delete from sanpham where id_SP=" . $id_SP;
+    pdo_execute($sql);
+}
+function delete_img($id_img)
+{
+    $sql = "delete from img_sp where id_img=" . $id_img;
     pdo_execute($sql);
 }
 function loadall_sanpham($Ten_hanghoa, $id_danhmuc)
@@ -133,6 +144,21 @@ function load_img($id_SP)
     return $img;
 }
 
+function loadall_img_id($id_SP)
+{
+    $sql = "SELECT * FROM img_sp
+        WHERE id_SP= '$id_SP'";
+    $img = pdo_query($sql);
+    return $img;
+}
+
+function loadalls_img_id($id_img)
+{
+    $sql = "SELECT * FROM img_sp
+        WHERE id_img= '$id_img'";
+    $img = pdo_query($sql);
+    return $img;
+}
 function load_img_id()
 {
     $sql = "SELECT * FROM img_sp

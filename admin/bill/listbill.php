@@ -16,8 +16,9 @@
                     <th>KHÁCH HÀNG</th>
                     <th>SỐ LƯỢNG HÀNG</th>
                     <th>GIÁ TRỊ ĐƠN HÀNG</th>
-                    <th>TÌNH TRẠNG ĐƠN HÀNG</th>
+                    <th>Ngày xuất</th>
                     <th>Trạng thái</th>
+                    <th></th>
                     
                 </tr>
             </thead>
@@ -38,21 +39,28 @@
                         echo '
                         <tr>
                             <td><input type="checkbox" name="" id=""></td>
-                            <td><a href="'.$linkdh.'">BST-'.$bill['id_HD'].'</a></td>
+                            <td>'.$bill['id_HD'].'</td>
                             <td>'.$khachhang.'</td>
                             <td>'.$countsp.'</td>
                             <td>'.$bill['Tongtien'].'</td>
-                            <td>'.$ttdh.'</td>
+                            <td>'.$bill['Ngay'].'</td>
                             <td style="width: 50px"> ';
-                            if($pttt==0){
-                                echo '<button class="btn btn-success mb-1">Approve</button>
-                                <button class="btn btn-danger">Cancel</button>';
-                            }if($pttt==1){
-                                echo '<label class="badge badge-success" for="">Approved</label>';
-                            }if($pttt==2){
-                                echo '<label class="badge badge-danger" for="">Cancel</label>';
+                            if($pttt==1){
+                                echo 'Chuyển khoản';
+                            }elseif($pttt==2){
+                                echo 'Quét mã QR';
+                            }elseif($pttt==3){
+                                echo 'Xu tiki';
+                            }else {
+                                echo 'Tiền mặt';
                             }
                             echo ' </td>
+                            <td>
+                                <form action="index.php?act=ctdh&id_HD="'.$bill['id_HD'].'" method="post">
+                                <input name="id_HD" value="'.$bill['id_HD'].'" type="hidden">
+                                <input name="ctdh" value="Chi tiết" type="submit">
+                                </form>
+                            </td>
                                          </tr>';
                     }
                     

@@ -53,19 +53,19 @@
                         <?php echo $ten_user; ?>
                     </a>
                     <div class="ul2">
-                    <ul>
-                        <li><a href="index2.php?act=chitiettaikhoan&id_user=<?php echo $id_user ?>">Thông Tin Tài
-                                khoản</a>
-                        <li><a href="index2.php?act=quenmk">Quên Mật khẩu </a></li>
-                        <li><a href="index2.php?act=thoat">Đăng xuất</a></li>
-                        <?php if($vai_tro==1){ ?>
-                        <li><a href="admin/index.php">Đăng nhập admin</a>
-                        <?php
-                        }
-                        ?>
-                    </li>
+                        <ul>
+                            <li><a href="index2.php?act=chitiettaikhoan&id_user=<?php echo $id_user ?>">Thông Tin Tài
+                                    khoản</a>
+                            <li><a href="index2.php?act=quenmk">Quên Mật khẩu </a></li>
+                            <li><a href="index2.php?act=thoat">Đăng xuất</a></li>
+                            <?php if ($vai_tro == 1) { ?>
+                                <li><a href="admin/index.php">Đăng nhập admin</a>
+                                    <?php
+                            }
+                            ?>
+                            </li>
 
-                </div>
+                    </div>
                 </div>
                 </a>
             </div>
@@ -79,9 +79,9 @@
             <?php
         }
         ?>
-        <div class="col-1 relative w-16"> <a href="tiki/cart/cart1.php"><i
-                    class="fas fa-cart-plus mt-2 ml-3" style="color: #518cff"></i>
-                <span class="absolute top-1 left-2 text-red-700 font-bold " >
+        <div class="col-1 relative w-16"> <a href="tiki/cart/cart1.php"><i class="fas fa-cart-plus mt-2 ml-3"
+                    style="color: #518cff"></i>
+                <span class="absolute top-1 left-2 text-red-700 font-bold ">
                     <?php
                     $totalQuantity = isset($_SESSION['mycart']) ? count($_SESSION['mycart']) : 0;
                     echo $totalQuantity;
@@ -216,42 +216,53 @@
                             <h5 class="mb-0">Summary</h5>
                         </div>
                         <div class="card-body">
-                            <ul class="list-group list-group-flush">
-                                <li>
-                                    <img src="../../upload/<?php echo $img; ?>" alt="">
-                                </li>
-                                <li
-                                    class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                                    Tên KH:
-                                    <span>
-                                        <?php echo $ten_user; ?>
-                                    </span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                                    Địa chỉ:
-                                    <span>
-                                        <?php echo $diachi; ?>
-                                    </span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                                    Điện thoại:
-                                    <span>
-                                        <?php echo $dienthoai; ?>
-                                    </span>
-                                </li>
-                                <form class="update-quantity-form" action="../../giohang.php?act=pay" method="post">
-                                <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                                    Phương thức thanh toán:
-                                    <span>
-                                        <select id="pttt" name="pttt" class="my-3">
-                                            <option value="1">Chuyển khoản</option>
-                                            <option value="2">Quét mã QR</option>
-                                            <option value="3">Xu Tiki</option>
-                                            <option value="4">Tiền mặt</option>
-                                        </select>
-                                    </span>
-                                </li>
-                                
+                            <form class="update-quantity-form" action="../../giohang.php?act=pay" method="post">
+                                <ul class="list-group list-group-flush">
+                                    <li>
+                                        <img src="../../upload/<?php echo $img; ?>" alt="">
+                                    </li>
+                                    <li
+                                        class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                                        Tên KH:
+                                        <span>
+                                            <input style="border: 0;" type="text" name="ten_user"
+                                                value="<?php echo $ten_user; ?>">
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                        Địa chỉ:
+                                        <span>
+                                            <input style="border: 0;" type="text" name="diachi"
+                                                value="<?php echo $diachi; ?>">
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                        Điện thoại:
+                                        <span>
+                                            <input style="border: 0;" type="text" name="dienthoai"
+                                                value="<?php echo $dienthoai; ?>">
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                        Email:
+                                        <span>
+                                            <input style="border: 0;" type="text" name="email"
+                                                value="<?php echo $email; ?>">
+                                        </span>
+                                    </li>
+
+                                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                        Phương thức thanh toán:
+                                        <span>
+                                            <select id="pttt" name="pttt" class="my-3">
+                                                <option value="1">Chuyển khoản</option>
+                                                <option value="2">Quét mã QR</option>
+                                                <option value="3">Xu Tiki</option>
+                                                <option value="4">Tiền mặt</option>
+                                            </select>
+                                        </span>
+                                    </li>
+
 
                                     <li
                                         class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
@@ -266,19 +277,15 @@
                                                 .000đ
                                             </strong></span>
                                     </li>
-                            </ul>
+                                </ul>
 
-                            <input type="hidden" name="ttien" value="<?php echo $ttien; ?>">
-                            <input type="hidden" name="id_user" value="<?php echo $id_user; ?>">
-                            <input type="hidden" name="ten_user" value="<?php echo $ten_user; ?>">
-                            <input type="hidden" name="diachi" value="<?php echo $diachi; ?>">
-                            <input type="hidden" name="Ngay" id="ngayHidden" value="">
-                            <input type="hidden" name="dienthoai" value="<?php echo $dienthoai; ?>">
+                                <input type="hidden" name="ttien" value="<?php echo $ttien; ?>">
+                                <input type="hidden" name="id_user" value="<?php echo $id_user; ?>">
+                                <input type="hidden" name="Ngay" id="ngayHidden" value="">
 
-                            <input type="hidden" name="email" value="<?php echo $email; ?>">
-                            <!-- <input type="hidden" name="ngay" value=""> -->
-                            <input type="submit" class="btn btn-primary border-0 btn-lg btn-block bg-amber-300"
-                                name="pay" value="Mua hàng">
+                                <!-- <input type="hidden" name="ngay" value=""> -->
+                                <input type="submit" class="btn btn-primary border-0 btn-lg btn-block bg-amber-300"
+                                    name="pay" value="Mua hàng">
                             </form>
                         </div>
                     </div>

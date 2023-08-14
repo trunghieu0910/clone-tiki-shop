@@ -247,6 +247,71 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
             $img = load_img($id_danhmuc);
             include "sanpham/list.php";
             break;
+        case 'imgsp':
+            if (isset($_GET['id_SP']) && ($_GET['id_SP'] > 0)) {
+                $id_SP = $_GET['id_SP'];
+                $listimg = loadall_img_id($id_SP);
+            }
+            $sp = loadOne_sanpham($id_SP);
+            include "sanpham/listimg.php";
+            break;
+        case 'addimgsp':
+            // kiểm tra có click vào nút add hay không
+
+            if (isset($_POST['themmoi']) && $_POST['themmoi']) {
+                $error = array();
+                $id_SP = $_POST['id_SP'];
+                $duong_dan_anh = $_FILES['duong_dan_anh']['name'];
+                $target_dir = "../upload/";
+                $target_file = $target_dir . basename($_FILES["duong_dan_anh"]["name"]);
+                move_uploaded_file($_FILES["duong_dan_anh"]["tmp_name"], $target_file);
+                if ($duong_dan_anh == "") {
+                    $error['duong_dan_anh'] = "Không để trống hình ảnh";
+                }
+                $imageFileType = strtolower(pathinfo($duong_dan_anh, PATHINFO_EXTENSION));
+                if ($duong_dan_anh != "" && $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+                    $error['duong_dan_anh'] = "Chỉ file JPG, JPEG, PNG & GIF files được cho phép";
+                }
+                if (!$error) {
+                    $is_inserteds = insert_imgsp($id_SP, $duong_dan_anh);
+                    // header('Location: ../admin/sanpham/listimg.php?id_SP=' . $id_SP . '');
+                } else {
+                    $thongbao = "Thêm Bài Danh Mục Thất Bại";
+                }
+
+                if (isset($_GET['id_SP'])) {
+                    $id_SP = $_GET['id_SP'];
+                } else {
+                    $id_SP = $_POST['id_SP'];
+                }
+                $listimg = loadall_img_id($id_SP);
+                $sp = loadOne_sanpham($id_SP);
+                include "sanpham/listimg.php";
+                break;
+            }
+            if (isset($_GET['id_SP'])) {
+                $id_SP = $_GET['id_SP'];
+            } else {
+                $id_SP = $_POST['id_SP'];
+            }
+            $listimg = loadall_img_id($id_SP);
+            $sp = loadOne_sanpham($id_SP);
+            include "sanpham/addimgsp.php";
+
+            break;
+        case 'xoaimg':
+            if (isset($_GET['id_img']) && ($_GET['id_img'] > 0)) {
+                $id_img = $_GET['id_img'];
+                delete_img($id_img);
+            }
+            if (isset($_GET['id_SP'])) {
+                $id_SP = $_GET['id_SP'];
+            } else {
+                $id_SP = $_POST['id_SP'];
+            }
+            $listimg = loadall_img_id($id_SP);
+            include "sanpham/listimg.php";
+            break;
 
         case 'xoasp':
             if (isset($_GET['id_SP']) && ($_GET['id_SP'] > 0)) {
@@ -343,10 +408,13 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
             include "bill/listbill.php";
             break;
         case 'ctdh';
-            $bill = loadone_bill($_GET['idbill']);
-            $billct = loadall_cart($_GET['idbill']);
-            include 'bill/ctdh.php';
-            break;
+            if (isset($_POST['ctdh']) && ($_POST['ctdh'])) {
+                $id_HD = $_POST['id_HD'];
+                $bills = loadone_hoadons($id_HD);
+                $listbill = loadall_cthd($id_HD);
+                include 'bill/ctdh.php';
+                break;
+            }
         case 'xoadh':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                 delete_donhang($_GET['id']);

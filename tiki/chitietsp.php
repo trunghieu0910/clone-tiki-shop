@@ -12,7 +12,7 @@
         integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <?php
-    session_start();
+    // session_start();
     ?>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"
         integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
@@ -150,18 +150,22 @@
 
                         </div>
                         <div class="thumbnails flex mb-4">
-                            <img src="tiki/img/sach-muon-kiep-nhan-sinh-1.webp" class="w-20 h-20" alt="Thumbnail 1"
-                                onclick="showImage('tiki/img/sach-muon-kiep-nhan-sinh-1.webp')">
-                            <img src="tiki/img/sach-muon-kiep-nhan-sinh.webp" class="w-20 h-20" alt="Thumbnail 2"
-                                onclick="showImage('tiki/img/sach-muon-kiep-nhan-sinh.webp')">
-                            <img src="tiki/img/sach-muon-kiep-nhan-sinh-1.webp" class="w-20 h-20" alt="Thumbnail 3"
-                                onclick="showImage('tiki/img/sach-muon-kiep-nhan-sinh-1.webp')">
-                            <img src="tiki/img/sach-muon-kiep-nhan-sinh.webp" class="w-20 h-20" alt="Thumbnail 4"
-                                onclick="showImage('tiki/img/sach-muon-kiep-nhan-sinh.webp')">
-                            <img src="tiki/img/sach-muon-kiep-nhan-sinh-1.webp" class="w-20 h-20" alt="Thumbnail 5"
-                                onclick="showImage('tiki/img/sach-muon-kiep-nhan-sinh-1.webp')">
+                            <?php
+                            foreach ($loadimg as $imgsp) {
+                                extract($imgsp);
+                                ?>
+                                <img <?php echo 'src="upload/' . $duong_dan_anh . '"' ?> class="w-20 h-20"
+                                    onclick="showImage('<?php echo '../upload/' . $duong_dan_anh . '' ?>')">
+                                <!-- <img src="tiki/img/sach-muon-kiep-nhan-sinh.webp" class="w-20 h-20" alt="Thumbnail 2"
+                                    onclick="showImage('tiki/img/sach-muon-kiep-nhan-sinh.webp')">
+                                <img src="tiki/img/sach-muon-kiep-nhan-sinh-1.webp" class="w-20 h-20" alt="Thumbnail 3"
+                                    onclick="showImage('tiki/img/sach-muon-kiep-nhan-sinh-1.webp')">
+                                <img src="tiki/img/sach-muon-kiep-nhan-sinh.webp" class="w-20 h-20" alt="Thumbnail 4"
+                                    onclick="showImage('tiki/img/sach-muon-kiep-nhan-sinh.webp')">
+                                <img src="tiki/img/sach-muon-kiep-nhan-sinh-1.webp" class="w-20 h-20" alt="Thumbnail 5"
+                                    onclick="showImage('tiki/img/sach-muon-kiep-nhan-sinh-1.webp')"> -->
+                            <?php } ?>
                         </div>
-
                         <div class="ml-3 my-3">
                             <span class="text-xl font-bold">Chia sẻ:</span>
                             <i class="fab fa-facebook text-2xl ml-3" style="color: #043995;"></i>
@@ -549,7 +553,9 @@
                             <img src="upload/<?php echo $img; ?>" class="w-12 h-12" style="border-radius: 50%;" alt="">
                             <div class="ml-2">
                                 <div class="flex">
-                                    <h1 class=" font-bold"><?php echo $ten_user; ?></h1>
+                                    <h1 class=" font-bold">
+                                        <?php echo $ten_user; ?>
+                                    </h1>
                                 </div>
                                 <p class="mt-1">Đã tham gia 5 năm</p>
                             </div>
@@ -564,7 +570,8 @@
                                     <input type="hidden" name="id_user" value="<?php echo $id_user; ?>">
                                     <textarea name="noidung" rows="6" cols="120"
                                         placeholder="Nhập bình luận của bạn"></textarea><br>
-                                    <input class="btn btn-outline-primary" type="submit" name="guibinhluan" value="Gửi bình luận">
+                                    <input class="btn btn-outline-primary" type="submit" name="guibinhluan"
+                                        value="Gửi bình luận">
                                 </form>
                             </div>
                         </div>
